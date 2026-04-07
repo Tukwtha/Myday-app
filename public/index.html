@@ -276,14 +276,14 @@ body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text)
     <div class="fg"><label>Icon</label><div class="emoji-grid" id="emoGrid"></div></div>
     <div class="fg"><label>Category</label>
       <div class="cat-grid" id="catGrid">
-        <div class="cg" data-c="morning" onclick="selCat(this)">Morning</div>
-        <div class="cg" data-c="gym" onclick="selCat(this)">Gym</div>
-        <div class="cg" data-c="health" onclick="selCat(this)">Health</div>
-        <div class="cg" data-c="work" onclick="selCat(this)">Work</div>
-        <div class="cg" data-c="move" onclick="selCat(this)">Move out</div>
-        <div class="cg" data-c="lenga" onclick="selCat(this)">LENGA</div>
-        <div class="cg" data-c="job" onclick="selCat(this)">Job search</div>
-        <div class="cg" data-c="self" onclick="selCat(this)">Self care</div>
+        <div class="cg" data-c="morning" onclick="pickCatOption(this)">Morning</div>
+        <div class="cg" data-c="gym" onclick="pickCatOption(this)">Gym</div>
+        <div class="cg" data-c="health" onclick="pickCatOption(this)">Health</div>
+        <div class="cg" data-c="work" onclick="pickCatOption(this)">Work</div>
+        <div class="cg" data-c="move" onclick="pickCatOption(this)">Move out</div>
+        <div class="cg" data-c="lenga" onclick="pickCatOption(this)">LENGA</div>
+        <div class="cg" data-c="job" onclick="pickCatOption(this)">Job search</div>
+        <div class="cg" data-c="self" onclick="pickCatOption(this)">Self care</div>
       </div>
     </div>
     <div class="fg"><label>Start time</label><input type="time" id="tTime"></div>
@@ -610,7 +610,7 @@ function openEdit(id){
 function closeTask(){document.getElementById('taskModal').classList.remove('active');}
 function rEmo(){const g=document.getElementById('emoGrid');g.innerHTML='';EMOJIS.forEach(e=>{const d=document.createElement('div');d.className=`emo ${e===selEmoji?'sel':''}`;d.textContent=e;d.onclick=()=>{selEmoji=e;rEmo();};g.appendChild(d);});}
 function rCat(){document.querySelectorAll('#catGrid .cg').forEach(el=>el.classList.toggle('sel',el.dataset.c===selCat));}
-function selCat(el){selCat=el.dataset.c;rCat();}
+function pickCatOption(el){selCat=el.dataset.c;rCat();}
 
 function saveTask(){
   const name=document.getElementById('tName').value.trim(),time=document.getElementById('tTime').value,dur=parseInt(document.getElementById('tDur').value)||30;
